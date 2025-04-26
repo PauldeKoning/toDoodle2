@@ -5,11 +5,39 @@
 <head>
     <meta charset="utf-8">
     <title>HTML boilerplate</title>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="./main.js" defer></script>
 </head>
 
 <body>
 
+    <div id="mainContent">
+        <div id="leftSideDiv">
+            <label for="todoName">Name</label>
+            <input type="text" name="todoName" id="nameInput">
+
+            <label for="importance">Importance</label>
+            <select name="importance" id="importanceInput">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <label for="urgency">Urgency</label>
+            <select name="urgency" id="urgencyInput">
+                <option value="high">High</option>
+                <option value="low">Low</option>
+            </select>
+
+            <button id="createTodoBtn">createTodo</button>
+
+            <div id="todoDetailDisplay"></div>
+        </div>
+
+        <div id="rightSideDiv">
+            <table id="todoDisplay">
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

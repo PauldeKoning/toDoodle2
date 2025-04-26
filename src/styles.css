@@ -1,0 +1,38 @@
+body {
+  background-color: rebeccapurple;
+}
+
+tr {
+  background-color: red;
+  border: 2px solid grey;
+  box-shadow: inset 1px 1px 5px black;
+  display: flex;
+}
+
+p {
+  margin: 0;
+}
+
+div {
+  min-height: 250px;
+  border: 2px solid red;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#mainContent {
+  display: flex;
+}
+
+#leftSideDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#rightSideDiv {
+  width: 100%;
+}
+
+#dc972c2f-992c-51c6-a634-8f72aeb33ee7 {
+  width: 0;
+  height: 0;
+}

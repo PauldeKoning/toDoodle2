@@ -1,0 +1,44 @@
+│
+├── model/
+│  └── todo.js
+        class todo {
+            this.id
+            this.title
+            this.finished
+            this.importance
+            this.urgency
+}
+│  └── todoStorage.js
+        export default LIST = []
+│
+├── controller/
+│  └── todoController.js
+        selectTodos(requirementsObj)
+        removeTodo(todoId)
+
+│  └── eventHandlers.js
+        create todo with button()
+            >ui.validateInput()
+                />LET newTodoData = ui.getTodoCreationData()
+                />todoController.createTodo(newTodoData)
+                />ui.displayTodo
+
+        remove todo with button()
+            >todoController.removeTodo(todoId)
+│
+├── view/
+│  └── domElements.js
+        object with every DOM element {}
+│  └── ui.js
+        todoInput{}
+            >validate()
+            >get()
+        displayTodoDetails(parentNode, todoObj)
+                parentNode.appendNode
+        displayTodoList(parentNode, todoArray)
+        createTodoNodes(todo)
+        
+│
+├── main.js
+├── styles.css
+├── index.html
