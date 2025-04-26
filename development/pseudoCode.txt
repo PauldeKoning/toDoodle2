@@ -1,26 +1,46 @@
 │
 ├── model/
-│  └── todo.js
-        class todo {
-            this.id
-            this.title
-            this.finished
-            this.importance
-            this.urgency
+│  └── Todo.js
+        export default todoItem = class {
+            constructor(all variables){
+                //find a way to get the value of the object keys
+                this.id = id
+                this.title = title
+                this.finished = finished
+                this.importance = importance
+                this.urgency = urgency
+            }
+            set title(){
+                return this.title
+            }
+
+            get title(){
+                return this.title
+            }
+
+            static create(todoDataObj){
+            let newTodo = new Todo(todoDataObj)
+            }
+        }
+
+
 }
 │  └── todoStorage.js
         export default LIST = []
 │
 ├── controller/
 │  └── todoController.js
+        let id = 0
         selectTodos(requirementsObj)
+        createTodo()
+            >Todo.create(todoDataObj)
         removeTodo(todoId)
 
 │  └── eventHandlers.js
         create todo with button()
             />ui.todoInput.validate()
                 >LET newTodoData = ui.todoInput.get()
-                >todoController.createTodo(newTodoData)
+                >todoController.createTodo(todoDataObj)
                 >ui.displayTodoList(parentNode, todoArray)
 
         remove todo with button()
