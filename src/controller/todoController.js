@@ -7,6 +7,6 @@ export default {
             id:2
         }
         const newTodo = TodoItem.create(todoDataObj)
-        console.log(newTodo)
+        TodoItem.saveTodo(newTodo)
     }
 }
