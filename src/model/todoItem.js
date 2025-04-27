@@ -1,4 +1,6 @@
-import todoStorage from "./todoStorage"
+import { storage } from "./todoStorage";
+
+
 
 export default class TodoItem {
     constructor(todoDataObj) {
@@ -15,6 +17,7 @@ export default class TodoItem {
     }
 
     static saveTodo(todo) {
-        todoStorage.push(todo)
+        console.log(storage.array)
+       storage.array.push(todo)
     }
 }
