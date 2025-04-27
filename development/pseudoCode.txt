@@ -4,6 +4,7 @@
         export default todoItem = class {
             constructor(all variables){
                 //find a way to get the value of the object keys
+                id = id++
                 this.id = id
                 this.title = title
                 this.finished = finished
@@ -21,6 +22,8 @@
             static create(todoDataObj){
             let newTodo = new Todo(todoDataObj)
             }
+
+            static id = 0
         }
 
 
@@ -30,21 +33,29 @@
 │
 ├── controller/
 │  └── todoController.js
-        let id = 0
         selectTodos(requirementsObj)
         createTodo()
-            >Todo.create(todoDataObj)
+            > let newTodo = >Todo.create(todoDataObj)
+            > console.log(newTodo)
         removeTodo(todoId)
+
 
 │  └── eventHandlers.js
         create todo with button()
-            />ui.todoInput.validate()
-                >LET newTodoData = ui.todoInput.get()
-                >todoController.createTodo(todoDataObj)
-                >ui.displayTodoList(parentNode, todoArray)
+            >ui.todoInput.validate()
+                // />LET todoDataObj = ui.todoInput.get()
+
+                const todoDataObj = {
+                    title = "todoTitle1"
+                }
+
+                />todoController.createTodo(todoDataObj)
+                />ui.displayTodoList(parentNode, todoArray)
 
         remove todo with button()
-            >todoController.removeTodo(todoId)
+            if (confirm("are you sure you want to remove this todo")){
+                />todoController.removeTodo(todoId)
+            }
 │
 ├── view/
 │  └── domElements.js
