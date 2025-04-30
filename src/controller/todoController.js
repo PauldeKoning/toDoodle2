@@ -1,15 +1,13 @@
-import TodoItem from "../model/todoItem"; 
-import storage from "../model/todoStorage";
+import TodoItem from "../model/todoItem";
 
 export default {
 
-    createTodo: function () {
-        const todoDataObj = {
-            title: "newTodoName",
-            id: 2
-        }
+    createTodo: function (todoDataObj) {
+        todoDataObj.finished = false
         const newTodo = TodoItem.create(todoDataObj)
         TodoItem.saveTodo(newTodo)
+        console.log(todoDataObj)
+
     },
 
     
