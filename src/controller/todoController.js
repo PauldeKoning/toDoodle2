@@ -6,8 +6,6 @@ export default {
         todoDataObj.finished = false
         const newTodo = TodoItem.create(todoDataObj)
         TodoItem.saveTodo(newTodo)
-        console.log(todoDataObj)
-
     },
 
     

@@ -13,6 +13,12 @@ export default class TodoItem {
 
     static id = 0
 
+    static create(todoDataObj) {
+        todoDataObj.id = this.id++
+        const newTodo = new TodoItem(todoDataObj)
+        return newTodo
+    }
+
     static saveTodo(todo) {
        storage.array.push(todo)
     }
