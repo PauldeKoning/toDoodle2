@@ -1,13 +1,43 @@
+import { differenceInCalendarDays } from 'date-fns';
+
 const storage = {
-    array: [],
+  array: [],
 
-    arrayOrderedByUrgency: [],
+  arrayOrderedByUrgency: [],
 
-    orderByUrgency: function () {
-        
-    },
+  orderByUrgency: function () {
+    this.storeDaysUntilDeadlineAsProperty();
+    const originalArray = this.array;
+    let todoAmount = originalArray.length;
 
-}
+    let firstTodo = originalArray[todoAmount - 1];
+    this.arrayOrderedByUrgency.push(firstTodo);
+
+    for (let i = todoAmount - 1; i > 0; i--) {
+      let currentTodo = originalArray[i - 1];
+      this.arrayOrderedByUrgency.push(currentTodo);
+    }
+  },
+
+  storeDaysUntilDeadlineAsProperty: function () {
+    const originalArray = this.array;
+    let todoAmount = originalArray.length;
+    let currentDate = new Date();
+
+    console.log(this.array);
+
+    for (let i = todoAmount; i > 0; i--) {
+      let currentTodo = originalArray[i - 1];
+
+      let daysUntilDeadline = differenceInCalendarDays(
+        currentTodo.lastDayOfDeadline,
+        currentDate,
+      );
+
+      currentTodo.daysUntilDeadline = daysUntilDeadline;
+    }
+  },
+};
 
 export { storage };
 

@@ -1,22 +1,26 @@
-import TodoItem from "../model/todoItem";
+import TodoItem from '../model/todoItem';
+import { dates } from '../model/dates';
 
 export default {
+  createTodo: function (todoDataObj) {
+    todoDataObj.finished = false;
 
-    createTodo: function (todoDataObj) {
-        todoDataObj.finished = false
-        const newTodo = TodoItem.create(todoDataObj)
-        TodoItem.saveTodo(newTodo)
-    },
+    let formattedDate = dates.parseHtmlDateToFnsFormat(
+      todoDataObj.lastDayOfDeadline,
+    );
+    todoDataObj.lastDayOfDeadline = formattedDate;
 
-    
-    removeTodo: function (todo, storage) {
-        const removalIndex = storage.array.findIndex(
-            (element) => element.id === todo.id
-        )
+    const newTodo = TodoItem.create(todoDataObj);
+    TodoItem.saveTodo(newTodo);
+  },
 
-        if (confirm(`Are you sure you want to delete Todo ${todo.title}?`)) {
-            storage.array.splice([removalIndex], 1)
-        }
+  removeTodo: function (todo, storage) {
+    const removalIndex = storage.array.findIndex(
+      (element) => element.id === todo.id,
+    );
+
+    if (confirm(`Are you sure you want to delete Todo ${todo.title}?`)) {
+      storage.array.splice([removalIndex], 1);
     }
-    
-}
+  },
+};

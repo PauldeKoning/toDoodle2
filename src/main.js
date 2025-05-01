@@ -1,7 +1,6 @@
 import './styles.css';
 import todoController from './controller/todoController';
 import { storage } from './model/todoStorage';
-import { currentDate } from './model/dates';
 
 let testingIIFE = (function () {
   console.log('hello');
@@ -11,7 +10,7 @@ let testingIIFE = (function () {
       title: 'mostUrgentTodo',
       id: 1,
       importance: 1,
-      lastDayOfDeadline: '2025 - 06 - 16',
+      lastDayOfDeadline: '2025, 5, 01',
       dateSpecifiedByUser: true,
     },
     {
@@ -33,7 +32,7 @@ let testingIIFE = (function () {
       id: 5,
       urgency: 2,
       importance: 1,
-      lastDayOfDeadline: '2025 - 11 - 20',
+      lastDayOfDeadline: '2025 - 05 - 2',
       dateSpecifiedByUser: false,
     },
   ];
@@ -42,5 +41,8 @@ let testingIIFE = (function () {
     todoController.createTodo(element);
   });
 
+  storage.orderByUrgency();
+
   console.log(storage.array);
+  console.log(storage.arrayOrderedByUrgency);
 })();

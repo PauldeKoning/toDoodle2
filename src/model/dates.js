@@ -1,9 +1,5 @@
 import { differenceInDays, format } from 'date-fns';
 
-const currentDate = new Date();
-
-console.log(currentDate);
-
 const dates = {
   currentDate: new Date(),
 
@@ -11,7 +7,7 @@ const dates = {
     //dates need to be formatted from:
     //2020-01-05 to 2020, 1, 5
 
-    let dashRegex = /(-)/g;
+    let dashRegex = /( - )/g;
     let dateWithCommas = htmlDate.replace(dashRegex, ', ');
 
     let precedingZeroRegex = /(, 0)/g;
@@ -30,4 +26,4 @@ console.log('days back = ' + daysBack);
 console.log('days forward = ' + daysForward); 
 */
 
-export { currentDate };
+export { dates };
