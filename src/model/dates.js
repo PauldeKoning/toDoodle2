@@ -8,14 +8,18 @@ const dates = {
   currentDate: new Date(),
 
   parseHtmlDateToFnsFormat: function (htmlDate) {
-    let regex = /( -)/g;
-    let newString = htmlDate.replace(regex, ',');
-    return newString;
+    //dates need to be formatted from:
+    //2020-01-05 to 2020, 1, 5
+
+    let dashRegex = /(-)/g;
+    let dateWithCommas = htmlDate.replace(dashRegex, ', ');
+
+    let precedingZeroRegex = /(, 0)/g;
+    let newDate = dateWithCommas.replace(precedingZeroRegex, ', ');
+
+    return newDate;
   },
 };
-
-console.log(dates.parseHtmlDateToFnsFormat('21 - 2 - 3'));
-console.log(dates.parseHtmlDateToFnsFormat('2023, 3, 2'));
 
 //how to format the dates:
 /*
