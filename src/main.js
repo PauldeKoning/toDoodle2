@@ -3,37 +3,44 @@ import todoController from './controller/todoController';
 import { storage } from './model/todoStorage';
 
 let testingIIFE = (function () {
-  console.log('hello');
-
   const todoTestArray = [
     {
+      title: 'todoNextYear',
+      importance: 2,
+      lastDayOfDeadline: '2026 - 01 - 01',
+      dateSpecifiedByUser: true,
+    },
+    {
       title: 'todayToday',
-      id: 0,
       importance: 1,
       lastDayOfDeadline: '2025, 5, 01',
       dateSpecifiedByUser: true,
     },
     {
       title: 'todoInThePast',
-      id: 1,
       importance: 2,
       lastDayOfDeadline: '2024 - 10 - 09',
       dateSpecifiedByUser: false,
     },
     {
       title: 'veryChillTodo',
-      id: 2,
       importance: 3,
       lastDayOfDeadline: '2025 - 12 - 01',
       dateSpecifiedByUser: true,
     },
     {
-      title: 'todosoon',
-      id: 3,
+      title: 'todoLaterToday',
       urgency: 2,
       importance: 1,
-      lastDayOfDeadline: '2025 - 05 - 2',
+      lastDayOfDeadline: '2025 - 05 - 1',
       dateSpecifiedByUser: false,
+    },
+    {
+      title: 'todoTomorrow',
+      urgency: 2,
+      importance: 1,
+      lastDayOfDeadline: '2025 - 05 - 02',
+      dateSpecifiedByUser: true,
     },
   ];
 

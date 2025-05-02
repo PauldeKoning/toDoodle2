@@ -26,6 +26,7 @@ export default {
   },
 
   orderTodos: function () {
-    console.log(storage.getOrderByUrgency());
+    storage.arrayOrderedByUrgency = [];
+    storage.arrayOrderedByUrgency = storage.getOrderByUrgency();
   },
 };
