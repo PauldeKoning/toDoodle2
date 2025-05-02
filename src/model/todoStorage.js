@@ -12,10 +12,32 @@ const storage = {
 
     let firstTodo = originalArray[todoAmount - 1];
     this.arrayOrderedByUrgency.push(firstTodo);
+    console.log(this.arrayOrderedByUrgency);
 
+    //go through every todo
     for (let i = todoAmount - 1; i > 0; i--) {
       let currentTodo = originalArray[i - 1];
-      this.arrayOrderedByUrgency.push(currentTodo);
+
+      console.log('newtodo');
+      for (let j = this.arrayOrderedByUrgency.length; j > 0; j--) {
+        console.log(j);
+        //so we are looping arrayOrderByUrgency from
+        //the least urgent to the most urgent,
+        //the current todo is placed before the first more urgent todo.
+
+        let todoToCompareTo = this.arrayOrderedByUrgency[j - 1];
+        console.log(j);
+
+        if (
+          todoToCompareTo.daysUntilDeadline < currentTodo.daysUntilDeadline ||
+          j === 1
+          //or if no more urgent todo is found, it is the most urgent
+        ) {
+          this.arrayOrderedByUrgency.splice(j - 1, 0, currentTodo);
+          console.log(this.arrayOrderedByUrgency);
+        }
+        console.log(j);
+      }
     }
   },
 
@@ -23,8 +45,6 @@ const storage = {
     const originalArray = this.array;
     let todoAmount = originalArray.length;
     let currentDate = new Date();
-
-    console.log(this.array);
 
     for (let i = todoAmount; i > 0; i--) {
       let currentTodo = originalArray[i - 1];

@@ -7,29 +7,29 @@ let testingIIFE = (function () {
 
   const todoTestArray = [
     {
-      title: 'mostUrgentTodo',
-      id: 1,
+      title: 'todayToday',
+      id: 0,
       importance: 1,
       lastDayOfDeadline: '2025, 5, 01',
       dateSpecifiedByUser: true,
     },
     {
-      title: 'casualTodo',
-      id: 3,
+      title: 'todoInThePast',
+      id: 1,
       importance: 2,
       lastDayOfDeadline: '2024 - 10 - 09',
       dateSpecifiedByUser: false,
     },
     {
-      title: 'normalTodo',
-      id: 4,
+      title: 'veryChillTodo',
+      id: 2,
       importance: 3,
       lastDayOfDeadline: '2025 - 12 - 01',
       dateSpecifiedByUser: true,
     },
     {
-      title: 'regularTodo',
-      id: 5,
+      title: 'todosoon',
+      id: 3,
       urgency: 2,
       importance: 1,
       lastDayOfDeadline: '2025 - 05 - 2',
@@ -43,6 +43,6 @@ let testingIIFE = (function () {
 
   storage.orderByUrgency();
 
-  console.log(storage.array);
+  //console.log(storage.array);
   console.log(storage.arrayOrderedByUrgency);
 })();
