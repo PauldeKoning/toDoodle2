@@ -41,7 +41,7 @@ let testingIIFE = (function () {
     todoController.createTodo(element);
   });
 
-  storage.orderByUrgency();
+  todoController.orderTodos();
 
   //console.log(storage.array);
   console.log(storage.arrayOrderedByUrgency);

@@ -5,45 +5,40 @@ const storage = {
 
   arrayOrderedByUrgency: [],
 
-  orderByUrgency: function () {
+  getOrderByUrgency: function () {
+    let temporaryArray = [];
+
     this.storeDaysUntilDeadlineAsProperty();
     const originalArray = this.array;
     let todoAmount = originalArray.length;
 
     let firstTodo = originalArray[todoAmount - 1];
-    this.arrayOrderedByUrgency.push(firstTodo);
-    console.log(this.arrayOrderedByUrgency);
+    temporaryArray.push(firstTodo);
+    console.log(temporaryArray);
 
     //go through every todo
     for (let i = todoAmount - 1; i > 0; i--) {
       let currentTodo = originalArray[i - 1];
-      for (let j = this.arrayOrderedByUrgency.length; j > 0; j--) {
+      for (let j = temporaryArray.length; j > 0; j--) {
         //so we are looping arrayOrderByUrgency from
         //the least urgent to the most urgent,
         //the current todo is placed before the first more urgent todo.
 
-        let todoToCompareTo = this.arrayOrderedByUrgency[j - 1];
+        let todoToCompareTo = temporaryArray[j - 1];
 
         if (todoToCompareTo.daysUntilDeadline < currentTodo.daysUntilDeadline) {
-          this.arrayOrderedByUrgency.splice(j, 0, currentTodo);
-          console.log('if1');
-          this.arrayOrderedByUrgency.forEach((element) => {
-            console.log(element.title);
-          });
+          temporaryArray.splice(j, 0, currentTodo);
           break;
         } else if (
           j === 1
           //or if no more urgent todo is found, it is the most urgent)
         ) {
-          this.arrayOrderedByUrgency.splice(0, 0, currentTodo);
-          console.log('if2');
-          this.arrayOrderedByUrgency.forEach((element) => {
-            console.log(element.title);
-          });
+          temporaryArray.splice(0, 0, currentTodo);
           break;
         }
       }
     }
+    return temporaryArray;
   },
 
   storeDaysUntilDeadlineAsProperty: function () {

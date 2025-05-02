@@ -1,5 +1,6 @@
 import TodoItem from '../model/todoItem';
 import { dates } from '../model/dates';
+import { storage } from '../model/todoStorage';
 
 export default {
   createTodo: function (todoDataObj) {
@@ -22,5 +23,9 @@ export default {
     if (confirm(`Are you sure you want to delete Todo ${todo.title}?`)) {
       storage.array.splice([removalIndex], 1);
     }
+  },
+
+  orderTodos: function () {
+    console.log(storage.getOrderByUrgency());
   },
 };
