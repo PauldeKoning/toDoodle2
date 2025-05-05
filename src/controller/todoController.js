@@ -1,32 +1,28 @@
 import TodoItem from '../model/todoItem';
-import { dates } from '../model/dates';
-import { storage } from '../model/todoStorage';
+import TodoStorage from '../model/todoStorage';
 
-export default {
-  createTodo: function (todoDataObj) {
-    todoDataObj.finished = false;
+export default class TodoController {
+  storage;
 
-    let formattedDate = dates.parseHtmlDateToFnsFormat(
-      todoDataObj.lastDayOfDeadline,
-    );
-    todoDataObj.lastDayOfDeadline = formattedDate;
+  constructor() {
+    // With the static singleton method, you can create as many controllers, they will all use the same storage instance
+    this.storage = TodoStorage.GetSingleton();
+  }
 
-    const newTodo = TodoItem.create(todoDataObj);
-    TodoItem.saveTodo(newTodo);
-  },
+  createTodo(todo) {
+    // From the user specified data, create a todoItem object
+    const todoItem = new TodoItem(todo);
+    // Then add this to the storage and return new saved todoItem
+    // The storage adds the ID into the object
+    return this.storage.addTodo(todoItem);
+  }
 
-  removeTodo: function (todo, storage) {
-    const removalIndex = storage.array.findIndex(
-      (element) => element.id === todo.id,
-    );
+  removeTodo(todoId) {
+    // Remove todoItem from storage. Return removed object
+    return this.storage.removeTodo(todoId);
+  }
 
-    if (confirm(`Are you sure you want to delete Todo ${todo.title}?`)) {
-      storage.array.splice([removalIndex], 1);
-    }
-  },
-
-  orderTodos: function () {
-    storage.arrayOrderedByUrgency = [];
-    storage.arrayOrderedByUrgency = storage.getOrderByUrgency();
-  },
-};
+  getOrderedTodos() {
+    return this.storage.getOrderByUrgency();
+  }
+}

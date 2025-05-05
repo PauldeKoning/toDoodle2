@@ -1,4 +1,5 @@
-import { storage } from './todoStorage';
+import { differenceInCalendarDays } from 'date-fns';
+import { dates } from './dates';
 
 export default class TodoItem {
   constructor(todoDataObj) {
@@ -6,21 +7,18 @@ export default class TodoItem {
     this.title = todoDataObj.title;
     this.importance = todoDataObj.importance;
 
-    this.lastDayOfDeadline = todoDataObj.lastDayOfDeadline;
+    // Parse date properly
+    this.lastDayOfDeadline = dates.parseHtmlDateToFnsFormat(todoDataObj.lastDayOfDeadline);
     this.dateSpecifiedByUser = todoDataObj.dateSpecifiedByUser;
 
-    this.finished = todoDataObj.finished;
+    // Default to false!
+    this.finished = todoDataObj.finished || false;
   }
 
-  static id = 0;
-
-  static create(todoDataObj) {
-    todoDataObj.id = this.id++;
-    const newTodo = new TodoItem(todoDataObj);
-    return newTodo;
-  }
-
-  static saveTodo(todo) {
-    storage.array.push(todo);
+  getDaysUntilDeadline() {
+    return differenceInCalendarDays(
+      this.lastDayOfDeadline,
+      new Date(),
+    );
   }
 }

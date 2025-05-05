@@ -1,5 +1,3 @@
-import { differenceInDays, format } from 'date-fns';
-
 const dates = {
   currentDate: new Date(),
 
@@ -23,7 +21,7 @@ let daysBack = differenceInDays(earlierDate, currentDate);
 let daysForward = differenceInDays(laterDate, currentDate);
 
 console.log('days back = ' + daysBack);
-console.log('days forward = ' + daysForward); 
+console.log('days forward = ' + daysForward);
 */
 
 export { dates };

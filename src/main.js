@@ -1,8 +1,7 @@
 import './styles.css';
-import todoController from './controller/todoController';
-import { storage } from './model/todoStorage';
+import TodoController from './controller/todoController';
 
-let testingIIFE = (function () {
+(function () {
   const todoTestArray = [
     {
       title: 'todoNextYear',
@@ -44,12 +43,19 @@ let testingIIFE = (function () {
     },
   ];
 
+  const controller = new TodoController();
+
+  console.log('-----------------------------------------------------------------');
+  console.log('Create all todos and print them')
   todoTestArray.forEach((element) => {
-    todoController.createTodo(element);
+    console.log(controller.createTodo(element));
   });
 
-  todoController.orderTodos();
+  console.log('-----------------------------------------------------------------');
+  console.log('Remove 2nd todo and log this todo to confirm removal');
+  console.log(controller.removeTodo(2));
 
-  //console.log(storage.array);
-  console.log(storage.arrayOrderedByUrgency);
+  console.log('-----------------------------------------------------------------');
+  console.log('Get all todos in order');
+  console.log(controller.getOrderedTodos());
 })();
